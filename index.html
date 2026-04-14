@@ -1,7 +1,23 @@
-<a href="https://veckio.io/" target="_blank">
-  <button>Veck.io (Link 1)</button>
-</a>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Game</title>
+</head>
+<body style="text-align:center; font-family:sans-serif; background:#111; color:white;">
 
-<a href="https://games76.io/h5-games-play/veckio/" target="_blank">
-  <button>Veck.io (Link 2)</button>
-</a>
+<h1>Click the box!</h1>
+<p>Score: <span id="score">0</span></p>
+
+<div id="box" style="width:100px;height:100px;background:red;margin:50px auto;cursor:pointer;"></div>
+
+<script>
+let score = 0;
+
+document.getElementById("box").onclick = function() {
+  score++;
+  document.getElementById("score").innerText = score;
+}
+</script>
+
+</body>
+</html>
