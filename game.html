@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arena Game</title>
+  <style>
+    body { margin:0; background:#111; overflow:hidden; }
+    canvas { display:block; margin:0 auto; background:#222; }
+  </style>
+</head>
+<body>
+
+<canvas id="c" width="800" height="500"></canvas>
+
+<script>
+const c = document.getElementById("c");
+const ctx = c.getContext("2d");
+
+let player = { x:400, y:250, size:15 };
+let bullets = [];
+
+document.addEventListener("keydown", e => {
+  if(e.key==="w") player.y -= 10;
+  if(e.key==="s") player.y += 10;
+  if(e.key==="a") player.x -= 10;
+  if(e.key==="d") player.x += 10;
+});
+
+document.addEventListener("click", () => {
+  bullets.push({ x: player.x, y: player.y });
+});
+
+function draw(){
+  ctx.clearRect(0,0,800,500);
+
+  // player
+  ctx.fillStyle="lime";
+  ctx.fillRect(player.x, player.y, player.size, player.size);
+
+  // bullets
+  ctx.fillStyle="red";
+  bullets.forEach(b => {
+    b.y -= 5;
+    ctx.fillRect(b.x, b.y, 5, 5);
+  });
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
